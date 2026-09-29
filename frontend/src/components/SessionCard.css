@@ -1,0 +1,182 @@
+.voxa-session-card {
+  background-color: var(--bg-surface);
+  border: var(--border-width-standard) solid var(--ink-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  width: 19vw;
+  height: 25vh;
+  position: relative;
+}
+
+.voxa-session-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.voxa-session-card--sage {
+  background-color: #EAF8F0;
+  border-color: #AEE1CE;
+}
+
+.voxa-session-card--purple {
+  background-color: #F8F4FE;
+  border-color: #D2B9FF;
+}
+
+.voxa-session-card--peach {
+  background-color: #FFF9F5;
+  border-color: #F8DCB5;
+}
+
+.voxa-session-card--pink {
+  background-color: #FFF0F5;
+  border-color: #F3B6D2;
+}
+
+.voxa-session-card--yellow {
+  background-color: #FFF9E0;
+  border-color: #FDEDB8;
+}
+
+.voxa-session-card--blue {
+  background-color: #EEF8FF;
+  border-color: #A9D8F5;
+}
+
+.voxa-session-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.voxa-session-card__tag {
+  font-family: var(--font-display);
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--ink-border);
+}
+
+.voxa-session-card__tag--sage {
+  background-color: var(--accent-sage);
+  color: var(--ink-primary);
+}
+
+.voxa-session-card__tag--purple {
+  background-color: var(--accent-purple);
+  color: var(--ink-primary);
+}
+
+.voxa-session-card__tag--peach {
+  background-color: var(--accent-peach);
+  color: var(--ink-primary);
+}
+
+.voxa-session-card__tag--pink {
+  background-color: var(--accent-pink);
+  color: var(--ink-primary);
+}
+
+.voxa-session-card__tag--yellow {
+  background-color: var(--accent-yellow);
+  color: var(--ink-primary);
+}
+
+.voxa-session-card__tag--blue {
+  background-color: var(--accent-blue);
+  color: var(--ink-primary);
+}
+
+.voxa-session-card__duration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  position: absolute;
+  top: 35px;
+  left: 30px;
+}
+
+.voxa-session-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.voxa-session-card__title {
+  margin: 0 0 8px 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ink-primary);
+  text-align: left;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.voxa-session-card__snippet {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+  margin: 0;
+  transform: translateY(3vh) translateX(-15px);
+  width: 15vw;
+}
+
+.voxa-session-card__footer {
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+}
+
+
+.voxa-session-card__date {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 500;
+  position: absolute;
+  top: -63px;
+  left: 70px;
+}
+
+.voxa-session-card__play-btn {
+  width: 32px;
+  height: 32px;
+  background-color: var(--accent-yellow);
+  border: 1.5px solid var(--ink-border);
+  border-radius: 50%;
+  box-shadow: 2px 2px 0px var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transform: translateX(12vw);
+}
+
+.voxa-session-card__play-btn:hover {
+  transform: translate(11.8vw, -1px);
+  box-shadow: 3px 3px 0px var(--ink-border);
+}
+
+.voxa-session-card__play-btn:active {
+  transform: translate(12vw, 1px);
+  box-shadow: 1px 1px 0px var(--ink-border);
+}

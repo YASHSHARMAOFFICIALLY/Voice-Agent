@@ -1,0 +1,73 @@
+.voxa-hero-illustration {
+  position: relative;
+  width: 150%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voxa-hero-illustration__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.voxa-hero-illustration__floating-badge {
+  position: absolute;
+  background-color: var(--bg-surface);
+  border: var(--border-width-standard) solid var(--ink-border);
+  box-shadow: 2px 2px 0px var(--ink-border);
+  padding: 6px 12px;
+  border-radius: var(--border-radius-pill);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--ink-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.voxa-hero-illustration__floating-badge--top {
+  top: -10px;
+  right: 15px;
+  transform: rotate(2deg);
+}
+
+.voxa-hero-illustration__floating-badge--bottom {
+  bottom: 8px;
+  left: 10px;
+  transform: rotate(-1.5deg);
+}
+
+.voxa-hero-illustration__badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #10B981;
+  border-radius: 50%;
+}
+
+.voxa-hero-illustration__badge-indicator {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-yellow);
+  border: 1px solid var(--ink-border);
+  border-radius: 50%;
+}
+
+/* Subtle animation flourishes */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(2deg);
+  }
+}
+
+.voxa-hero-illustration__floating-badge--top {
+  animation: floatGentle 4s ease-in-out infinite;
+}

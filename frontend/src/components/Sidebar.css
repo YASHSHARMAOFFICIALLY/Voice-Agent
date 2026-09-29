@@ -1,0 +1,257 @@
+/* ══════════════════════════════════
+   SIDEBAR — fixed narrow rail
+══════════════════════════════════ */
+.voxa-sidebar {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: 13%;
+  height: calc(100vh - 32px);
+  background-color: var(--bg-sidebar);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 10px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  box-shadow: 5px 6px 0 var(--ink-primary);
+}
+
+/* ── Logo ── */
+.voxa-sidebar__brand {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px 0;
+  margin-bottom: 18px;
+}
+
+/* ── Navigation ── */
+.voxa-sidebar__nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.voxa-sidebar__menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.voxa-sidebar__item {
+  display: block;
+}
+
+.voxa-sidebar__link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 9px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--ink-secondary);
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.voxa-sidebar__link:hover {
+  background-color: rgba(17, 17, 17, 0.05);
+  color: var(--ink-primary);
+}
+
+/* Only the active item gets the highlight container */
+.voxa-sidebar__link--active {
+  background-color: var(--color-purple-cta);
+  color: var(--ink-primary);
+  border-color: var(--ink-primary);
+  font-weight: 700;
+}
+
+.voxa-sidebar__icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.voxa-sidebar__label {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Divider ── */
+.voxa-sidebar__divider {
+  height: 1px;
+  width: 82%;
+  background-color: rgba(17, 17, 17, 0.22);
+  margin: 10px 0 10px 4px;
+}
+
+.voxa-sidebar__settings {
+  display: block;
+}
+
+/* ── Sticky note ── */
+.voxa-sidebar__quote-card {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: 14px;
+  background-color: var(--bg-quote);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 8px;
+  padding: 14px 12px 12px;
+  transform: rotate(-11deg) translateY(-4vh)translateX(1.5vw);
+  transform-origin: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 30%;
+  width: 80%;
+}
+
+.voxa-sidebar__quote-text {
+  font-family: 'Jua', var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink-primary);
+  text-align: center;
+}
+
+.voxa-sidebar__quote-doodle {
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  color: var(--ink-primary);
+  line-height: 0;
+}
+
+.voxa-sidebar__quote-doodle--top {
+  transform: rotate(12deg);
+}
+
+.voxa-sidebar__quote-arrow {
+  display: flex;
+  justify-content: flex-end;
+  line-height: 0;
+}
+
+.voxa-sidebar__quote-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Profile ── */
+.voxa-sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  background-color: var(--bg-surface-warm);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 8px;
+}
+  .voxa-sidebar__notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px 8px;
+  background-color: var(--bg-surface-warm);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  }
+
+  .voxa-sidebar__avatar2 {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-purple-cta);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  }
+.voxa-sidebar__avatar {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-purple-cta);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.voxa-sidebar__initials {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 10.5px;
+  color: var(--ink-primary);
+}
+
+.voxa-sidebar__user-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.voxa-sidebar__username {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11.5px;
+  color: var(--ink-primary);
+  line-height: 1.15;
+}
+
+.voxa-sidebar__plan-badge {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--ink-muted);
+  line-height: 1.15;
+}
+
+.voxa-sidebar__profile-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.voxa-sidebar__profile-trigger:hover {
+  color: var(--ink-primary);
+}
+
+/* ── Compact widths ── */
+@media (max-height: 800px) {
+  .voxa-sidebar__quote-card {
+    padding: 11px 10px 10px;
+    margin-bottom: 10px;
+  }
+  .voxa-sidebar__quote-text { font-size: 18px; }
+  .voxa-sidebar__brand        { margin-bottom: 12px; }
+  .voxa-sidebar__link         { padding: 7px 8px; }
+}

@@ -1,0 +1,39 @@
+.voxa-app {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-workspace);
+  padding: 12px;
+  gap: 16px;
+}
+
+.voxa-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background: var(--bg-surface);
+  border: var(--border-width-standard) solid var(--ink-border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-sm);
+  z-index: 1000;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* ── Main: sits right of the fixed sidebar ── */
+.voxa-main {
+  flex: 1;
+  min-width: 0;
+  /* sidebar is fixed at left:12px, width 186px → push main past it */
+  margin-left: 198px;
+  display: flex;
+  flex-direction: column;
+}
+
+.voxa-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding-bottom: 32px;
+}

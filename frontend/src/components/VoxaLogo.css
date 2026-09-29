@@ -1,0 +1,50 @@
+.voxa-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.voxa-logo__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 36px;
+  width: 36px;
+  background-color: #FDEDB8;
+  border: 2px solid #111111;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0px #111111;
+  padding: 4px;
+}
+
+.voxa-logo__bar {
+  display: inline-block;
+  width: 3.5px;
+  background-color: #111111;
+  border-radius: 2px;
+}
+
+.voxa-logo__bar--1 { height: 12px; }
+.voxa-logo__bar--2 { height: 22px; }
+.voxa-logo__bar--3 { height: 16px; }
+.voxa-logo__bar--4 { height: 20px; }
+
+.voxa-logo__text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  color: #111111;
+  letter-spacing: -0.03em;
+}
+
+/* Sizing variations */
+.voxa-logo--small .voxa-logo__mark {
+  height: 28px;
+  width: 28px;
+  border-radius: 8px;
+}
+.voxa-logo--small .voxa-logo__text {
+  font-size: 20px;
+}

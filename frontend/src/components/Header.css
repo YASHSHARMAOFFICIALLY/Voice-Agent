@@ -1,0 +1,85 @@
+.voxa-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60px;
+  padding: 0 8px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.voxa-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.voxa-header__btn--bell {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background-color: var(--bg-surface);
+  border: var(--border-width-standard) solid var(--ink-border);
+  border-radius: 50%;
+  box-shadow: 2px 2px 0px var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-primary);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.voxa-header__btn--bell:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--ink-border);
+}
+
+.voxa-header__notification-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: #EF4444;
+  border: 1.5px solid var(--ink-border);
+  border-radius: 50%;
+}
+
+.voxa-header__profile-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.voxa-header__bursts {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  pointer-events: none;
+}
+
+.voxa-header__avatar {
+  width: 44px;
+  height: 44px;
+  background-color: var(--accent-purple);
+  border: var(--border-width-standard) solid var(--ink-border);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0px var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.voxa-header__avatar:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--ink-border);
+}
+
+.voxa-header__initials {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--ink-primary);
+}

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voxa — Personal AI Audio Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-workspace: #FDF9F3;
+      --bg-surface: #FFFFFF;
+      --bg-sidebar: #F8F1FF;
+      --bg-quote: #FDEDB8;
+      --ink-primary: #111111;
+      --ink-secondary: #29272D;
+      --ink-muted: #787878;
+      --color-purple-cta: #E4D2FF;
+      --color-green-mint: #AEEDB8;
+      --color-sage: #EAF8F0;
+      --color-yellow-pale: #FFF9E8;
+      --color-yellow-cta: #FDEDB8;
+      --color-pink: #FFF0F5;
+      --color-blue: #EEF8FF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-workspace);
+      color: var(--ink-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .voxa-container {
+      display: flex;
+      min-height: 100vh;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    /* Sidebar */
+    .voxa-sidebar {
+      position: fixed;
+      left: 16px;
+      top: 16px;
+      width: 186px;
+      height: calc(100vh - 32px);
+      background-color: var(--bg-sidebar);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .voxa-sidebar__brand {
+      text-align: center;
+      margin-bottom: 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink-primary);
+    }
+
+    .voxa-sidebar__nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .voxa-sidebar__link {
+      padding: 12px 12px;
+      border-radius: 5px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+
+    .voxa-sidebar__link--active {
+      background-color: var(--color-purple-cta);
+      color: var(--ink-primary);
+      border: 1px solid var(--ink-primary);
+      box-shadow: 2px 2px 0px var(--ink-primary);
+    }
+
+    .voxa-sidebar__quote {
+      background-color: var(--bg-quote);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 16px 12px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 0px var(--ink-primary);
+      transform: rotate(-11deg);
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Jua', cursive;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink-primary);
+      line-height: 1.4;
+    }
+
+    .voxa-sidebar__profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background-color: #FAF6EE;
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      box-shadow: 2px 2px 0px var(--ink-primary);
+    }
+
+    .voxa-sidebar__avatar {
+      width: 43px;
+      height: 43px;
+      background-color: var(--bg-sidebar);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .voxa-sidebar__info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .voxa-sidebar__username {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--ink-primary);
+    }
+
+    .voxa-sidebar__plan {
+      font-size: 10px;
+      color: var(--ink-muted);
+    }
+
+    /* Main content */
+    .voxa-main {
+      flex: 1;
+      margin-left: 186px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .voxa-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      height: 60px;
+      margin-bottom: 8px;
+    }
+
+    .voxa-header__bell {
+      width: 44px;
+      height: 44px;
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s ease;
+    }
+
+    .voxa-header__bell:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--ink-primary);
+    }
+
+    .voxa-header__dot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      background-color: #EF4444;
+      border: 1px solid var(--ink-primary);
+      border-radius: 50%;
+    }
+
+    .voxa-header__avatar {
+      width: 44px;
+      height: 44px;
+      background-color: var(--bg-sidebar);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink-primary);
+    }
+
+    .voxa-canvas {
+      flex: 1;
+      max-width: 1440px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-bottom: 32px;
+    }
+
+    /* Hero */
+    .voxa-hero {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 32px;
+    }
+
+    .voxa-hero__content {
+      flex: 1;
+    }
+
+    .voxa-hero__tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--ink-primary);
+      margin-bottom: 16px;
+    }
+
+    .voxa-hero__headline {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .voxa-hero__highlight {
+      display: inline-block;
+      background-color: var(--color-green-mint);
+      border: 2px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 4px 12px;
+      transform: rotate(-1deg);
+      margin-top: 4px;
+    }
+
+    .voxa-hero__description {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ink-secondary);
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+
+    .voxa-hero__actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .voxa-btn {
+      padding: 12px 24px;
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .voxa-btn--purple {
+      background-color: var(--color-purple-cta);
+      color: var(--ink-primary);
+      box-shadow: 3px 3px 0px var(--ink-primary);
+    }
+
+    .voxa-btn--purple:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px var(--ink-primary);
+    }
+
+    .voxa-btn--yellow {
+      background-color: var(--color-yellow-cta);
+      color: var(--ink-primary);
+      box-shadow: 3px 3px 0px var(--ink-primary);
+    }
+
+    .voxa-btn--yellow:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px var(--ink-primary);
+    }
+
+    .voxa-hero__illustration {
+      flex: 0 0 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .voxa-hero__illustration svg {
+      width: 100%;
+      height: 100%;
+      max-width: 320px;
+    }
+
+    /* Features */
+    .voxa-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .voxa-feature {
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 20px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.15s ease;
+    }
+
+    .voxa-feature:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--ink-primary);
+    }
+
+    .voxa-feature--sage { background-color: var(--color-sage); }
+    .voxa-feature--pink { background-color: var(--color-pink); }
+    .voxa-feature--blue { background-color: var(--color-blue); }
+    .voxa-feature--yellow { background-color: var(--color-yellow-pale); }
+
+    .voxa-feature__tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--ink-primary);
+      width: fit-content;
+    }
+
+    .voxa-feature h3 {
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .voxa-feature p {
+      font-size: 11px;
+      color: var(--ink-secondary);
+      font-weight: 500;
+    }
+
+    /* Sessions */
+    .voxa-sessions {
+      margin-top: 24px;
+    }
+
+    .voxa-sessions h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .voxa-sessions__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .voxa-session {
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      min-height: 160px;
+      transition: all 0.15s ease;
+    }
+
+    .voxa-session:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--ink-primary);
+    }
+
+    .voxa-session--sage { background-color: var(--color-sage); }
+    .voxa-session--pink { background-color: var(--color-pink); }
+    .voxa-session--yellow { background-color: var(--color-yellow-pale); }
+    .voxa-session--blue { background-color: var(--color-blue); }
+
+    .voxa-session__badge {
+      font-size: 10px;
+      font-weight: 700;
+      background-color: white;
+      border: 1px solid var(--ink-primary);
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .voxa-session h3 {
+      font-size: 13px;
+      line-height: 1.2;
+    }
+
+    .voxa-session__meta {
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+
+    .voxa-session__text {
+      font-size: 12px;
+      color: var(--ink-secondary);
+      flex: 1;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .voxa-session__play {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background-color: var(--color-yellow-cta);
+      border: 1px solid var(--ink-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.1s ease;
+    }
+
+    .voxa-session__play:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 2px 2px 0px var(--ink-primary);
+    }
+
+    /* Stats */
+    .voxa-stats {
+      background-color: var(--bg-sidebar);
+      border: 1.5px solid #D2B9FF;
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .voxa-stats h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .voxa-stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .voxa-stat {
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .voxa-stat--sage {
+      background-color: var(--color-sage);
+    }
+
+    .voxa-stat__value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      margin-bottom: 4px;
+    }
+
+    .voxa-stat__label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+
+    /* Toast */
+    .voxa-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--color-yellow-cta);
+      border: 1.5px solid var(--ink-primary);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--ink-primary);
+      box-shadow: 3px 3px 0px var(--ink-primary);
+      z-index: 1000;
+      animation: slideUp 0.25s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .voxa-features,
+      .voxa-sessions__grid,
+      .voxa-stats__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .voxa-container {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .voxa-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-width: none;
+      }
+
+      .voxa-main {
+        margin-left: 0;
+      }
+
+      .voxa-hero {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .voxa-hero__illustration {
+        flex: 1;
+        max-width: 100%;
+      }
+
+      .voxa-features,
+      .voxa-sessions__grid,
+      .voxa-stats__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="voxa-container">
+    <!-- Sidebar -->
+    <aside class="voxa-sidebar">
+      <div class="voxa-sidebar__brand">Voxa</div>
+      <nav class="voxa-sidebar__nav">
+        <button class="voxa-sidebar__link voxa-sidebar__link--active">Home</button>
+        <button class="voxa-sidebar__link">Sessions</button>
+        <button class="voxa-sidebar__link">Translate</button>
+        <button class="voxa-sidebar__link">Library</button>
+        <button class="voxa-sidebar__link">Settings</button>
+      </nav>
+      <div class="voxa-sidebar__quote">Good ideas sound better here</div>
+      <div class="voxa-sidebar__profile">
+        <div class="voxa-sidebar__avatar">MH</div>
+        <div class="voxa-sidebar__info">
+          <div class="voxa-sidebar__username">Mehadi</div>
+          <div class="voxa-sidebar__plan">Free Plan</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="voxa-main">
+      <!-- Header -->
+      <div class="voxa-header">
+        <button class="voxa-header__bell" aria-label="Notifications">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="voxa-header__dot"></span>
+        </button>
+        <div class="voxa-header__avatar">MH</div>
+      </div>
+
+      <div class="voxa-canvas">
+        <!-- Hero -->
+        <section class="voxa-hero">
+          <div class="voxa-hero__content">
+            <p class="voxa-hero__tag">YOUR AUDIO, ORGANISED</p>
+            <h1 class="voxa-hero__headline">Talk it out.</h1>
+            <div class="voxa-hero__highlight">We'll handle the rest</div>
+            <p class="voxa-hero__description">
+              Record or upload audio. We'll transcribe, summarize, translate, and keep everything organized
+            </p>
+            <div class="voxa-hero__actions">
+              <button class="voxa-btn voxa-btn--purple" onclick="showToast('🎙️ Recording ready for Phase 2')">
+                Start Recording →
+              </button>
+              <button class="voxa-btn voxa-btn--yellow" onclick="showToast('📁 Upload ready for Phase 2')">
+                Upload Audio →
+              </button>
+            </div>
+          </div>
+          <div class="voxa-hero__illustration">
+            <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="260" height="190" rx="12" fill="#FFFDF9" stroke="#111" stroke-width="2" />
+              <rect x="40" y="60" width="100" height="60" rx="8" fill="#FFE066" stroke="#111" stroke-width="2" />
+              <text x="50" y="85" font-size="9" font-weight="bold" fill="#111">WAVEFORM</text>
+              <rect x="160" y="50" width="100" height="70" rx="8" fill="#E4D2FF" stroke="#111" stroke-width="2" />
+              <text x="170" y="78" font-size="9" font-weight="bold" fill="#111">SUMMARY</text>
+            </svg>
+          </div>
+        </section>
+
+        <!-- Features -->
+        <div class="voxa-features">
+          <div class="voxa-feature voxa-feature--sage">
+            <span class="voxa-feature__tag">Transcription</span>
+            <h3>Accurate Transcription</h3>
+            <p>(99% +)</p>
+          </div>
+          <div class="voxa-feature voxa-feature--pink">
+            <span class="voxa-feature__tag">AI Summary</span>
+            <h3>AI Summaries</h3>
+            <p>Key points, instantly</p>
+          </div>
+          <div class="voxa-feature voxa-feature--blue">
+            <span class="voxa-feature__tag">Translation</span>
+            <h3>Language Translation</h3>
+            <p>Multiple Languages</p>
+          </div>
+          <div class="voxa-feature voxa-feature--yellow">
+            <span class="voxa-feature__tag">Library</span>
+            <h3>Organized Library</h3>
+            <p>Everything in one place</p>
+          </div>
+        </div>
+
+        <!-- Sessions -->
+        <section class="voxa-sessions">
+          <h2>Recent Sessions</h2>
+          <div class="voxa-sessions__grid">
+            <div class="voxa-session voxa-session--sage">
+              <span class="voxa-session__badge">esp32</span>
+              <h3>ESP32 Battery Discussion</h3>
+              <p class="voxa-session__meta">Sept 20, 2026 • 12:43 • English</p>
+              <p class="voxa-session__text">Discussed the battery optimization...</p>
+              <button class="voxa-session__play" onclick="showToast('▶ Playing session')">▶</button>
+            </div>
+            <div class="voxa-session voxa-session--pink">
+              <span class="voxa-session__badge">iot</span>
+              <h3>ESP32 Battery Discussion</h3>
+              <p class="voxa-session__meta">Sept 20, 2026 • 12:43 • English</p>
+              <p class="voxa-session__text">Discussed the battery optimization...</p>
+              <button class="voxa-session__play" onclick="showToast('▶ Playing session')">▶</button>
+            </div>
+            <div class="voxa-session voxa-session--yellow">
+              <span class="voxa-session__badge">project</span>
+              <h3>ESP32 Battery Discussion</h3>
+              <p class="voxa-session__meta">Sept 20, 2026 • 12:43 • English</p>
+              <p class="voxa-session__text">Discussed the battery optimization...</p>
+              <button class="voxa-session__play" onclick="showToast('▶ Playing session')">▶</button>
+            </div>
+            <div class="voxa-session voxa-session--blue">
+              <span class="voxa-session__badge">esp32</span>
+              <h3>ESP32 Battery Discussion</h3>
+              <p class="voxa-session__meta">Sept 20, 2026 • 12:43 • English</p>
+              <p class="voxa-session__text">Discussed the battery optimization...</p>
+              <button class="voxa-session__play" onclick="showToast('▶ Playing session')">▶</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="voxa-stats">
+          <h3>This Week</h3>
+          <div class="voxa-stats__grid">
+            <div class="voxa-stat">
+              <div class="voxa-stat__value">4</div>
+              <div class="voxa-stat__label">Recordings</div>
+            </div>
+            <div class="voxa-stat">
+              <div class="voxa-stat__value">2h 18m</div>
+              <div class="voxa-stat__label">Audio Captured</div>
+            </div>
+            <div class="voxa-stat">
+              <div class="voxa-stat__value">3</div>
+              <div class="voxa-stat__label">Summaries</div>
+            </div>
+            <div class="voxa-stat voxa-stat--sage">
+              <div class="voxa-stat__value">2</div>
+              <div class="voxa-stat__label">Languages</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let toastTimeout;
+    function showToast(msg) {
+      const existing = document.querySelector('.voxa-toast');
+      if (existing) existing.remove();
+      clearTimeout(toastTimeout);
+      const toast = document.createElement('div');
+      toast.className = 'voxa-toast';
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+      toastTimeout = setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+.voxa-footer {
+  width: 80%;
+  box-sizing: border-box;
+
+  background: var(--bg-sidebar);
+  border: 2px solid #111111;
+  border-radius: 10px;
+
+  padding: 20px 48px 22px;
+
+  color: #111111;
+
+  transform: translateX(23%);
+
+  box-shadow: 5px 6px 0 var(--ink-primary);
+}
+
+/* -------------------------
+   Main footer area
+------------------------- */
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 60px;
+
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-bottom: -20px;
+}
+
+/* -------------------------
+   Brand
+------------------------- */
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.footer-logo span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  background: #fde9a9;
+
+  border: 2px solid #111111;
+  border-radius: 9px;
+
+  font-size: 17px;
+
+  box-shadow: 2px 2px 0 #111111;
+}
+
+.footer-brand p {
+  margin: 0;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #68636d;
+}
+
+/* -------------------------
+   Link columns
+------------------------- */
+
+.footer-links {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer-column h4 {
+  margin: 0 0 8px;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer-column a {
+  color: #68636d;
+  text-decoration: none;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #7657f6;
+  transform: translateX(3px);
+}
+
+/* -------------------------
+   Bottom bar
+------------------------- */
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1400px;
+  margin: 36px auto 0;
+  margin-bottom: -10px;
+  padding-top: 18px;
+
+  border-top: 1px solid #ddd8d2;
+
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+
+  color: #8a858c;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-bottom-links a {
+  color: #68636d;
+  text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+  color: #7657f6;
+}
+
+.footer-made {
+  text-align: right;
+}
+
+/* -------------------------
+   Tablet
+------------------------- */
+
+@media (max-width: 900px) {
+  .voxa-footer {
+    padding: 36px 28px 20px;
+  }
+
+  .footer-main {
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .footer-links {
+    gap: 60px;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* -------------------------
+   Mobile
+------------------------- */
+
+@media (max-width: 600px) {
+  .voxa-footer {
+    padding: 32px 20px 18px;
+  }
+
+  .footer-links {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-made {
+    text-align: left;
+  }
+}

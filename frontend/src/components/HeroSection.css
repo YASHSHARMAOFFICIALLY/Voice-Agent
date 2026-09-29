@@ -1,0 +1,124 @@
+.voxa-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 24px;
+  margin-top: 15px;
+}
+
+.voxa-hero__content {
+  flex: 1;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: -70px;
+  transform: translate(5%, -5%);
+}
+
+/* Top Tagline Badge */
+.voxa-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.voxa-hero__badge-icon {
+  color: var(--ink-primary);
+}
+
+.voxa-hero__badge-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--ink-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Typography Title */
+.voxa-hero__title {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ink-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.voxa-hero__title-line {
+  display: block;
+  font-size: 80px;
+}
+
+.voxa-hero__highlight-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-top: 4px;
+}
+
+.voxa-hero__highlight-box {
+  display: inline-block;
+  background-color: var(--color-green-mint);
+  border: var(--border-width-heavy) solid var(--ink-border);
+  border-radius: var(--border-radius-sm);
+  box-shadow: 3px 3px 0px var(--ink-border);
+  padding: 2px 14px;
+  transform: rotate(-1deg);
+  transform-origin: left center;
+}
+
+/* Subtitle */
+.voxa-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+
+/* Action CTAs */
+.voxa-hero__cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 999;
+}
+
+.voxa-hero__btn-arrow {
+  margin-left: 2px;
+  transition: transform 0.15s ease;
+}
+
+.voxa-hero__btn-record:hover .voxa-hero__btn-arrow {
+  transform: translateX(3px);
+}
+
+.voxa-hero__visual {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 450px;
+}
+
+@media (max-width: 1024px) {
+  .voxa-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+
+  .voxa-hero__visual {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

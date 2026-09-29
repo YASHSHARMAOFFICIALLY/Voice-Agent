@@ -1,0 +1,17 @@
+.voxa-landing-page {
+  flex: 1;
+  width: 100%;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 32px;
+}
+
+.landing-quote {
+  border: 1px solid #aeeeae;
+  border-radius: 10px;
+  width: 25vw;
+  height: 25vh;
+  transform: translate(54vw, -32vh);
+  background-color:#DDF3D9 ;
+}

@@ -1,0 +1,135 @@
+.voxa-recording {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  height: calc(100vh - 80px); 
+}
+
+.voxa-recording__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-purple-cta);
+  padding: 16px 24px;
+  border: var(--border-width) solid var(--ink-primary);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  width: 40vw;
+  height: 10vh;
+  transform: translate(15vw, -12vh);
+}
+
+.voxa-recording__status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.voxa-recording__indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff3b30;
+}
+
+.voxa-recording__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.voxa-recording__timer {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.voxa-recording__controls {
+  display: flex;
+  gap: 12px;
+}
+
+.voxa-recording__content {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.voxa-transcription, .voxa-summary {
+  flex: 1;
+  border: var(--border-width) solid var(--ink-primary);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.voxa-transcription {
+  background: var(--color-sage);
+}
+  .voxa-transcription h3 {
+    transform: translate(-25px, -25px);
+    padding: 20px;
+    width: 40vw;
+    background-color: #A1E9BB;
+  }
+
+.voxa-summary {
+  background: var(--color-pink);
+}
+  .voxa-summary h3 {
+    transform: translate(-25px, -25px);
+    padding: 20px;
+    width: 40vw;
+    background-color: #FFD2E3;
+  }
+
+.voxa-transcription__list, .voxa-summary__list {
+  flex: 1;
+  overflow-y: auto;
+}
+.voxa-summary__list{
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;;
+}
+  .voxa-summary__list span{
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin-bottom: 20px;
+  }
+
+.voxa-transcription__list p{
+  margin-bottom: 30px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.voxa-transcription__list span{
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  transform: translate(5vw, -8.2vh);
+  position:  absolute;
+  width: 30vw;
+}
+
+.voxa-summary__status, .voxa-transcription__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+

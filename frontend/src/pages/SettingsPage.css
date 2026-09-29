@@ -1,0 +1,50 @@
+.voxa-settings {
+  padding: 0;
+  width: 100%;
+}
+
+.voxa-settings__header {
+  margin-bottom: 24px;
+}
+
+.voxa-settings__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ink-primary);
+  margin-bottom: 16px;
+}
+
+.voxa-settings__section {
+  padding: 20px;
+  background-color: var(--bg-surface);
+  border: var(--border-width-standard) solid var(--ink-border);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.voxa-settings__section h3 {
+  margin: 0 0 12px 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink-primary);
+}
+
+.voxa-settings__control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: var(--border-width-standard) solid var(--ink-border);
+}
+
+.voxa-settings__control:last-child {
+  border-bottom: none;
+}
+
+.voxa-settings__actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
